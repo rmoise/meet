@@ -49,7 +49,7 @@ And the user should receive a list of upcoming events in that city
 
 <br />
 
-**SCENARIO 1:** AN EVENT ELEMENT IS COLLAPSED BY DEFAULT
+**SCENARIO 1:** An event element is collapsed by default
 
 **Given** the user has searched a city
 
@@ -59,7 +59,7 @@ And the user should receive a list of upcoming events in that city
 
 <br />
 
-**SCENARIO 2:** USER CAN EXPAND AN EVENT TO SEE ITS DETAILS
+**SCENARIO 2:** User can expand an event to see its details
 
 **Given** the user has viewed an event
 
@@ -69,7 +69,7 @@ And the user should receive a list of upcoming events in that city
 
 <br />
 
-**SCENARIO 3:** USER CAN COLLAPSE AN EVENT TO HIDE ITS DETAILS
+**SCENARIO 3:** User can collapse an event to hide its details
 
 **Given** the user has viewed an event
 
@@ -88,7 +88,7 @@ And the user should receive a list of upcoming events in that city
 
 <br />
 
-**SCENARIO 1:** WHEN USER HASN'T SPECIFIED A NUMBER, 32 IS THE DEFAULT NUMBER
+**SCENARIO 1:** When user hasn’t specified a number, 32 is the default number
 
 **Given** user hasn’t specified a number of events
 
@@ -98,7 +98,7 @@ And the user should receive a list of upcoming events in that city
 
 <br />
 
-**SCENARIO 2:** USERS CAN CHANGE THE NUMBER OF EVENTS THEY WANT TO SEE
+**SCENARIO 2:** User can change the number of events they want to see
 
 **Given** user starts typing a number from the number of events filter
 
@@ -117,7 +117,7 @@ And the user should receive a list of upcoming events in that city
 
 <br />
 
-**SCENARIO 1:** SHOW CACHED DATA WHEN THERE'S NO INTERNET CONNECTION
+**SCENARIO 1:** Show cached data when there’s no internet connection
 
 **Given** user has no internet connection
 
@@ -127,7 +127,7 @@ And the user should receive a list of upcoming events in that city
 
 <br />
 
-**SCENARIO 2:** SHOW ERROR WHEN USER CHANGES THE SETTINGS(CITY, TIME RANGE)
+**SCENARIO 2:** Show error when user changes the settings (city, time range)
 
 **Given** user has no internet connection
 
@@ -146,7 +146,7 @@ And the user should receive a list of upcoming events in that city
 
 <br />
 
-**SCENARIO 1:** SHOW A CHART WITH THE NUMBER OF UPCOMING EVENTS IN EACH CITY
+**SCENARIO 1:** Show a chart with the number of upcoming events in each city
 
 **Given** user hasn’t searched for any city
 
