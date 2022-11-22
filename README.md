@@ -1,6 +1,8 @@
 # meet
 
-**FEATURE 1: FILTER EVENTS BY CITY**
+
+# Features
+1. Filter Events by City
 
 > **User Story:** As a User, I should be able to filter events by city so that I can see the list of events that take place in that city.
 
@@ -36,7 +38,7 @@
 
 <br />
 
-**FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS**
+1. **Show/Hide an Event's Details**
 
 > **User Story:** As a User, I should be able to show/hide event details so that I can see more/less information about an event.
 
@@ -70,7 +72,7 @@
 
 <br />
 
-**FEATURE 3: SPECIFY NUMBER OF EVENTS**
+3. **Specify Number of Events**
 
 
 > **User Story:** As a User, I should be able to specify the number of events I want to view in the app so that I can see more or fewer events in the events list at once.
@@ -95,7 +97,7 @@
 
 <br />
 
-**FEATURE 4: USE THE APP WHEN OFFLINE**
+4. **Use the App When Offline**
 
 > **User Story:** As a User, I should be able to use the app when offline so that I can see the events I viewed the last time I was online.
 
@@ -119,7 +121,7 @@
 
 <br />
 
-**FEATURE 5: DATA VISUALIZATION**
+1. **Data Visualization**
 
 > **User Story:** As a User, I should be able to see a chart showing the upcoming events in each city so that I know what events are organized in which city.
 
