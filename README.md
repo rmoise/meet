@@ -1,12 +1,8 @@
 # meet
 
-**FEATURE 1:** FILTER EVENTS BY CITY
-
-<br />
+**FEATURE 1: FILTER EVENTS BY CITY**
 
 > **User Story:** As a User, I should be able to filter events by city so that I can see the list of events that take place in that city.
-
-<br />
 
 **Scenario 1:** When user hasn't searched for a city, show upcoming events from all cities.
 
@@ -39,15 +35,10 @@
 * And the user should receive a list of upcoming events in that city
 
 <br />
-<br />
 
-**FEATURE 2:** SHOW/HIDE AN EVENT'S DETAILS
-
-<br />
+**FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS**
 
 > **User Story:** As a User, I should be able to show/hide event details so that I can see more/less information about an event.
-
-<br />
 
 **Scenario 1:** An event element is collapsed by default
 
@@ -78,15 +69,11 @@
 * **Then** the user should be able to hide an event by clicking on the hide details button
 
 <br />
-<br />
 
-**FEATURE 3:** SPECIFY NUMBER OF EVENTS
+**FEATURE 3: SPECIFY NUMBER OF EVENTS**
 
-<br />
 
 > **User Story:** As a User, I should be able to specify the number of events I want to view in the app so that I can see more or fewer events in the events list at once.
-
-<br />
 
 **Scenario 1:** When user hasn’t specified a number, 32 is the default number
 
@@ -107,15 +94,10 @@
 * **Then** their list of events should be changed to show the specified amount of events they entered
 
 <br />
-<br />
 
-**FEATURE 4:** USE THE APP WHEN OFFLINE
-
-<br />
+**FEATURE 4: USE THE APP WHEN OFFLINE**
 
 > **User Story:** As a User, I should be able to use the app when offline so that I can see the events I viewed the last time I was online.
-
-<br />
 
 **Scenario 1:** Show cached data when there’s no internet connection
 
@@ -136,15 +118,10 @@
 * **Then** the user should get an error message displaying no internet access
 
 <br />
-<br />
 
-**FEATURE 5:** DATA VISUALIZATION
-
-<br />
+**FEATURE 5: DATA VISUALIZATION**
 
 > **User Story:** As a User, I should be able to see a chart showing the upcoming events in each city so that I know what events are organized in which city.
-
-<br />
 
 **Scenario 1:** Show a chart with the number of upcoming events in each city
 
