@@ -1,4 +1,4 @@
-# meet
+# Meet App
 
 
 ## Features
