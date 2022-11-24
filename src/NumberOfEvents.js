@@ -44,7 +44,3 @@ class NumberOfEvents extends Component {
 }
 
 export default NumberOfEvents;
-
-git add .
-git commit -m "type a commit title here"git commit -m "type a commit title here"
-git push origin main
