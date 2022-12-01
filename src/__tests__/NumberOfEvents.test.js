@@ -13,14 +13,14 @@ describe('<NumberOfEvents /> component', () => {
   });
 
   test('render input for number of events', () => {
-    expect(NumberOfEventsWrapper.find('.numberOfEvents__input')).toHaveLength(
+    expect(NumberOfEventsWrapper.find('#numberOfEvents__input')).toHaveLength(
       1
     );
   });
 
   test('render default input for number of events of 32', () => {
     expect(
-      NumberOfEventsWrapper.find('.numberOfEvents__input').prop('value')
+      NumberOfEventsWrapper.find('#numberOfEvents__input').prop('value')
     ).toBe(32);
   });
 });
