@@ -3,7 +3,7 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations } from './api';
+import { getEvents, extractLocations, checkToken } from './api';
 import './nprogress.css';
 
 
@@ -11,27 +11,57 @@ import './nprogress.css';
 class App extends Component {
     state = {
     events: [],
-    locations: []
+    locations: [],
+    numberOfEvents: 32,
+    selectedLocation: 'all',
   }
 
-updateEvents = (location) => {
-  getEvents().then((events) => {
-    const locationEvents = (location === 'all') ?
-      events :
-      events.filter((event) => event.location === location);
-    this.setState({
-      events: locationEvents
-    });
-  });
-}
-
-  componentDidMount() {
-    this.mounted = true;
+  updateEvents = (location, eventCount) => {
+    const { numberOfEvents } = this.state;
+    if (location === undefined) location = this.state.selectedLocation;
     getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
+      const locationEvents =
+        location === 'all'
+          ? events
+          : events.filter((event) => event.location === location);
+      eventCount = eventCount === undefined ? numberOfEvents : eventCount;
+      this.setState({
+        events: locationEvents.slice(0, eventCount),
+        selectedLocation: location,
+        numberOfEvents: eventCount,
+      });
     });
+  };
+
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter(
+        (event) => event.location === location
+      ).length;
+      const city = location.split(', ').shift();
+      return { city, number };
+    });
+    return data;
+  };
+
+async componentDidMount() {
+    this.mounted = true;
+
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
+    const isLocal = window.location.href.startsWith('http://localhost')
+      ? true
+      : code || isTokenValid;
+    if (isLocal && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events, locations: extractLocations(events) });
+        }
+      });
+    }
   }
 
   componentWillUnmount(){
@@ -39,10 +69,15 @@ updateEvents = (location) => {
   }
 
   render() {
+  const { numberOfEvents } = this.state;
+
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-         <NumberOfEvents />
+         <NumberOfEvents
+          updateEvents={this.updateEvents}
+          numberOfEvents={numberOfEvents}
+        />
         <EventList events={this.state.events} />
       </div>
     );
