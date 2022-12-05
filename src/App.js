@@ -3,8 +3,10 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations, checkToken } from './api';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import './nprogress.css';
+import WelcomeScreen from './WelcomeScreen';
+
 
 
 
@@ -14,6 +16,7 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     selectedLocation: 'all',
+    showWelcomeScreen: undefined,
   }
 
   updateEvents = (location, eventCount) => {
@@ -45,20 +48,20 @@ class App extends Component {
     return data;
   };
 
-async componentDidMount() {
+ async componentDidMount() {
     this.mounted = true;
-
     const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
-    const code = searchParams.get('code');
-    const isLocal = window.location.href.startsWith('http://localhost')
-      ? true
-      : code || isTokenValid;
-    if (isLocal && this.mounted) {
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
-          this.setState({ events, locations: extractLocations(events) });
+          this.setState({
+            events: events.slice(0, this.state.numberOfEvents),
+            locations: extractLocations(events)
+          });
         }
       });
     }
@@ -69,14 +72,19 @@ async componentDidMount() {
   }
 
   render() {
-  const { numberOfEvents } = this.state;
-
+    if (this.state.showWelcomeScreen) {
+      return (
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }}
+        />
+      )
+    }
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
          <NumberOfEvents
           updateEvents={this.updateEvents}
-          numberOfEvents={numberOfEvents}
+          numberOfEvents={this.state.numberOfEvents}
         />
         <EventList events={this.state.events} />
       </div>
