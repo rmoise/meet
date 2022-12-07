@@ -5,7 +5,10 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import * as atatus from 'atatus-spa';
 
+
+atatus.config('6731e979eb984deebb734ce4cae80f72').install();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
