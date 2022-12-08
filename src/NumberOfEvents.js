@@ -28,8 +28,8 @@ class NumberOfEvents extends Component {
     return (
       <div>
         <div className="numberOfEvents">
-          <label>
-            Number of Events:
+          <label className='mb-4'>
+            <h5>Number of Events</h5>
             <input
               type="number"
               id="numberOfEvents__input"

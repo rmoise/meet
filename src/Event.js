@@ -31,7 +31,7 @@ const eventStart = moment(start.dateTime, "YYYY-MM-DD HH:mm").toDate();
     return (
       <div className="event">
         <div className="event__Overview">
-          <h2 className="event__Overview--name">{summary}</h2>
+          <h2 className="mt-2 fw-bold event__Overview--name">{summary}</h2>
           <p className="event__Overview--localDate">{`${eventStart}`}</p>
           {location && (
             <p className="event__Overview--venue">
@@ -41,21 +41,21 @@ const eventStart = moment(start.dateTime, "YYYY-MM-DD HH:mm").toDate();
         {this.state.detailsVisible ? (
           <>
             <div className="event__Details">
-              <h3>About event:</h3>
-              <a href={event.htmlLink} className="details-link">
+              <h4 className="mt-3 fw-bold">About event</h4>
+              <a href={event.htmlLink} target="_blank" rel="noopener noreferrer">
                 See details on Google Calendar
               </a>
-              <p className="event__Details--description">{event.description}</p>
+              <p className="pt-2 event__Details--description">{event.description}</p>
             </div>
             <button
-              className="details-btn"
+              className="mx-2 mb-2 details-btn"
               onClick={this.handleDetailsToggled}
             >
               hide details
             </button>
           </>
         ) : (
-          <button className="details-btn" onClick={this.handleDetailsToggled}>
+          <button className="mx-2 mb-2 details-btn" onClick={this.handleDetailsToggled}>
             show details
           </button>
         )}
