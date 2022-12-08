@@ -29,7 +29,7 @@ class NumberOfEvents extends Component {
       <div>
         <div className="numberOfEvents">
           <label className='mb-4'>
-            <h5>Number of Events</h5>
+            <h6>Number of Events</h6>
             <input
               type="number"
               id="numberOfEvents__input"

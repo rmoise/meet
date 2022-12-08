@@ -31,7 +31,7 @@ const eventStart = moment(start.dateTime, "YYYY-MM-DD HH:mm").toDate();
     return (
       <div className="event">
         <div className="event__Overview">
-          <h2 className="mt-2 fw-bold event__Overview--name">{summary}</h2>
+          <h4 className="mt-2 fw-bold event__Overview--name">{summary}</h4>
           <p className="event__Overview--localDate">{`${eventStart}`}</p>
           {location && (
             <p className="event__Overview--venue">
@@ -41,7 +41,7 @@ const eventStart = moment(start.dateTime, "YYYY-MM-DD HH:mm").toDate();
         {this.state.detailsVisible ? (
           <>
             <div className="event__Details">
-              <h4 className="mt-3 fw-bold">About event</h4>
+              <h5 className="mt-3 fw-bold">About event</h5>
               <a href={event.htmlLink} target="_blank" rel="noopener noreferrer">
                 See details on Google Calendar
               </a>
