@@ -45,7 +45,7 @@ const eventStart = moment(start.dateTime, "YYYY-MM-DD HH:mm").toDate();
               <a href={event.htmlLink} target="_blank" rel="noopener noreferrer">
                 See details on Google Calendar
               </a>
-              <p className="pt-2 event__Details--description">{event.description}</p>
+              <p className="pt-2 pb-3 event__Details--description">{event.description}</p>
             </div>
             <button
               className="mx-2 mb-2 details-btn"
