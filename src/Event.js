@@ -34,7 +34,7 @@ const eventStart = moment(start.dateTime, "YYYY-MM-DD HH:mm").toDate();
           <h4 className="mt-2 fw-bold event__Overview--name">{summary}</h4>
           <p className="event__Overview--localDate">{`${eventStart}`}</p>
           {location && (
-            <p className="event__Overview--venue">
+            <p className=" mb-4 event__Overview--venue">
               @{summary} | {location}
             </p>
           )}
