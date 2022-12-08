@@ -84,7 +84,7 @@ async componentDidMount() {
     return (
       <div className="App">
         <h1 className='mt-5 mb-4'>Meet App</h1>
-        <h6 className='mt-3 mb-2'>Choose your nearest city</h6>
+        <h6 className='mt-3 mb-2'>Choose your Nearest City</h6>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
          <NumberOfEvents
           updateEvents={this.updateEvents}
