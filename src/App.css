@@ -45,14 +45,13 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   flex-basis: 300px;
-  max-width: 300px;
+ /*  max-width: 300px; */
   margin: auto;
   position: relative;
 }
 
 .suggestions {
   width: 250px;
-  position: absolute;
   z-index: 2;
   align-self: center;
   margin: 0;
@@ -131,10 +130,10 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-.Alert {
-  position: fixed;
-  top: 20px;
-}
+/* .Alert {
+  display: flex;
+  flex-direction: column;
+} */
 
 .data-vis-wrapper {
   display: flex;
