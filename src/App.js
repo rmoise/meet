@@ -91,14 +91,14 @@ async componentDidMount() {
     }
     return (
       <div className="App">
-        <h1 className='mt-5 mb-4'>Meet App</h1>
-        <h6 className='mt-3 mb-2'>Choose your nearest city</h6>
-         {!navigator.onLine && (
+      {!navigator.onLine && (
           <InfoAlert
             className="alert-centered"
             text="App is currently offline. You are seeing your cached data."
           />
         )}
+        <h1 className='mt-5 mb-4'>Meet App</h1>
+        <h6 className='mt-3 mb-2'>Choose your nearest city</h6>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
          <NumberOfEvents
           updateEvents={this.updateEvents}
