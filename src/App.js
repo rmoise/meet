@@ -60,6 +60,11 @@ async componentDidMount() {
     const isLocal = window.location.href.startsWith('http://localhost')
       ? true
       : code || isTokenValid;
+      if (navigator.onLine && !isLocal) {
+      const accessToken = localStorage.getItem("access_token");
+      const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+      const searchParams = new URLSearchParams(window.location.search);
+      const code = searchParams.get("code");
     this.setState({ showWelcomeScreen: !isLocal });
     if (isLocal && this.mounted) {
       getEvents().then((events) => {
@@ -68,7 +73,7 @@ async componentDidMount() {
         }
       });
     }
-  }
+  } }
 
 
   componentWillUnmount(){
