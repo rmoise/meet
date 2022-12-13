@@ -27,7 +27,8 @@ function WelcomeScreen(props) {
             <div className="privacy">
               <a
                 href="https://rmoise.github.io/meet/privacy.html"
-                rel="nofollow noopener"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Privacy policy
               </a>
