@@ -82,7 +82,7 @@ async componentDidMount() {
   }
 
   render() {
-    if (this.state.showWelcomeScreen) {
+    if (this.state.showWelcomeScreen ) {
       return (
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }}

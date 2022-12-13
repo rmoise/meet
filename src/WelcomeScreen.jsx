@@ -24,6 +24,14 @@ function WelcomeScreen(props) {
                 }}
               />
             </Card.Footer>
+            <div className="privacy">
+              <a
+                href="https://rmoise.github.io/meet/privacy.html"
+                rel="nofollow noopener"
+              >
+                Privacy policy
+              </a>
+            </div>
           </Card.Body>
         </Card>
       </Col>
