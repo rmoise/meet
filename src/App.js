@@ -114,7 +114,7 @@ class App extends Component {
           updateEvents={this.updateEvents}
           numberOfEvents={this.state.numberOfEvents}
         />
-        <h4>Events in eacdddh city</h4>
+        <h4>Events in each city</h4>
 
          <ScatterChart
           width={400}
