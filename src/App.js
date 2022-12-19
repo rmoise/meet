@@ -53,31 +53,38 @@ class App extends Component {
     return data;
   };
 
-async componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    const accessToken = localStorage.getItem('access_token');
-    let shouldGetEvents;
-    if (navigator.onLine) {
+    const isLocal =
+      window.location.href.startsWith("http://127.0.0.1") ||
+      window.location.href.startsWith("http://localhost");
+    if (navigator.onLine && !isLocal) {
+      const accessToken = localStorage.getItem("access_token");
       const isTokenValid = (await checkToken(accessToken)).error ? false : true;
       const searchParams = new URLSearchParams(window.location.search);
       const code = searchParams.get("code");
       this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-      shouldGetEvents = (code || isTokenValid) && this.mounted;
+      if ((code || isTokenValid) && this.mounted)
+        getEvents().then((events) => {
+          if (this.mounted) {
+            this.setState({
+              events: events.slice(0, this.state.numberOfEvents),
+              locations: extractLocations(events),
+            });
+          }
+        });
     } else {
-      shouldGetEvents = accessToken && this.mounted;
-      this.setState({showWelcomeScreen: false});
-    }
-
-    if (shouldGetEvents) {
       getEvents().then((events) => {
         if (this.mounted) {
-          events=events.slice(0,this.state.eventCount);
-          this.setState({ events, locations: extractLocations(events) });
+          this.setState({
+            showWelcomeScreen: false,
+            events: events.slice(0, this.state.numberOfEvents),
+            locations: extractLocations(events),
+          });
         }
       });
     }
   }
-
 
 
   componentWillUnmount(){
@@ -107,7 +114,7 @@ async componentDidMount() {
           updateEvents={this.updateEvents}
           numberOfEvents={this.state.numberOfEvents}
         />
-        <h4>Events in each city</h4>
+        <h4>Events in eacdddh city</h4>
 
          <ScatterChart
           width={400}
