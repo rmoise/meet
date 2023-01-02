@@ -200,6 +200,24 @@ input[type="number"] {
   font-family: "Roboto";
 }
 
+.data-vis-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+.data-vis-wrapper .recharts-responsive-container {
+  min-width: 100%;
+  display: flex;
+}
+.recharts-surface {
+  overflow: visible;
+}
+
+tspan {
+  text-align: center;
+}
 
 
 @media only screen and (min-width: 992px) {
