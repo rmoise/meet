@@ -28,7 +28,7 @@ class NumberOfEvents extends Component {
 
   render() {
     return (
-      <div>
+/*       <div>
         <div className="numberOfEvents">
           <label className='mb-5'>
             <h6>Number of Events</h6>
@@ -44,6 +44,28 @@ class NumberOfEvents extends Component {
             />
           </label>
         </div>
+      </div> */
+       <div className="numberOfEvents">
+        <label htmlFor="numberOfEvents" className="number-label">Show </label>
+        {/* <input
+          type="number"
+          id="numberOfEvents"
+          className="number-input"
+          value={this.state.eventCountInput}
+          onChange={this.handleNumber}
+        /> */}
+        <select
+          name="cars"
+          id="numberOfEvents"
+          className="number-input"
+          value={this.state.eventCountInput}
+          onChange={this.handleNumber}
+        >
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+        </select>
       </div>
     );
   }

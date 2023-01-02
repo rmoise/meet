@@ -7,9 +7,11 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import EventGenre from './EventGenre';
-
+import { Card, Col, Row } from 'react-bootstrap';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { InfoAlert } from './Alert';
+import ChartCity from './ChartCity';
+
 
 import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend} from 'recharts';
 
@@ -26,6 +28,7 @@ class App extends Component {
     numberOfEvents: 32,
     selectedLocation: 'all',
     showWelcomeScreen: undefined,
+        showChart: 'bar'
   }
 
   updateEvents = (location, eventCount) => {
@@ -80,11 +83,8 @@ class App extends Component {
     } else {
       getEvents().then((events) => {
         if (this.mounted) {
-          this.setState({
-            showWelcomeScreen: false,
-            events: events.slice(0, this.state.numberOfEvents),
-            locations: extractLocations(events),
-          });
+        const locations = extractLocations(events);
+        this.setState({ showWelcomeScreen: false, events: events.slice(0, this.state.numberOfEvents), locations: locations, eventsTotalCount: events.length, data: this.getData(locations, events) });
         }
       });
     }
@@ -113,16 +113,20 @@ class App extends Component {
         )}
         <h1 className='mt-5 mb-4'>Meet App</h1>
         <h6 className='mt-3 mb-2'>Choose your nearest city</h6>
+         <div className="flex-container">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
          <NumberOfEvents
           updateEvents={this.updateEvents}
           numberOfEvents={this.state.numberOfEvents}
         />
-        <h4>Events in each city</h4>
-        <div className='data-vis-wrapper'>
-          <EventGenre events={this.state.events}/>
-          <ResponsiveContainer height={400} >
-            <ScatterChart
+        </div>
+        <Row>
+          <Col>
+          <Card><h4>Events in each city</h4><EventGenre events={this.state.events}/></Card></Col>
+          <Col><Card><h4>Events in each city</h4><ResponsiveContainer height={400} >
+                <ChartCity data={this.state.data} updateEvents={this.updateEvents} locations={this.state.locations}/>
+
+           {/*  <ScatterChart
               margin={{
                 top: 20, right: 20, bottom: 20, left: 20,
               }}
@@ -138,9 +142,8 @@ class App extends Component {
               <Tooltip cursor={{ strokeDasharray: '3 3' }} />
               <Scatter data={this.getData()} fill="#147FE9" name='Number of events in each city'/>
               <Legend verticalAlign='bottom' height={60} />
-            </ScatterChart>
-          </ResponsiveContainer>
-        </div>
+            </ScatterChart> */}
+          </ResponsiveContainer></Card></Col></Row>
         <EventList events={this.state.events} />
       </div>
     );
