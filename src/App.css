@@ -1,7 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
-  text-align: center;
+  text-align: left;
   padding: 2% 5%;
+}
+#root {
+  background-color: #f4f5f6;
 }
 
 .App * {
@@ -16,6 +19,7 @@ ul {
 
 p {
   margin: 5px 0;
+  margin-bottom: 0 !important;
 }
 
 .flex-container {
@@ -46,7 +50,6 @@ p {
   height: 38px;
 }
 
-
 .display-none {
   display: none;
 }
@@ -54,8 +57,8 @@ p {
   display: block;
 }
 
-input[type="text"],
-input[type="number"] {
+input[type='text'],
+input[type='number'] {
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
@@ -66,13 +69,13 @@ input[type="number"] {
   height: 38px;
 }
 
-
 .suggestions {
-  width: 250px;
+  width: 100%;
+  position: absolute;
   z-index: 2;
-  align-self: center;
+  align-self: flex-start;
   margin: 0;
-  top: 43px;
+  top: 63px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
   border-bottom-left-radius: 4px;
@@ -92,7 +95,44 @@ input[type="number"] {
 }
 
 .suggestions > li:hover {
-  background-color: #bcdcdb;
+  background-color: #e8f2fe;
+}
+
+/* .Alert {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+} */
+
+/* .alert-centered {
+  justify-content: center;
+  align-items: center;
+} */
+
+.alerts {
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+  align-self: flex-start;
+  margin: 0;
+  font-size: 12px;
+  text-align: left;
+  overflow: visible;
+}
+
+.alerts-number {
+  position: absolute;
+  margin-top: -32px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.alert-warning {
+  width: 100%;
+  margin: 0;
+  font-size: 16px;
+  text-align: left;
+  border-bottom: 4px solid #50feca;
 }
 
 .event {
@@ -112,6 +152,7 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  text-align: center;
 }
 
 .name {
@@ -134,11 +175,11 @@ input[type="number"] {
 }
 
 .numberOfEvents {
-  max-width: 150px;
   padding: 0;
   text-align: end;
   font-size: 14px;
   margin-top: auto;
+  margin-left: 20px;
 }
 
 .number-label {
@@ -146,17 +187,8 @@ input[type="number"] {
   margin: 0;
 }
 
-.number-input {
-  line-height: 20px;
-  height: 38px;
-  max-width: 100px;
-  text-align: end;
-  border-radius: 4px;
-  outline: none;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  line-height: 38px;
-  margin-left: 6px;
+#numberOfEvents__input {
+  max-width: 99px;
 }
 
 .button-wrapper {
@@ -234,7 +266,7 @@ input[type="number"] {
   color: #fff;
   font-size: 14px;
   letter-spacing: 0.2px;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 }
 
 .data-vis-wrapper {
@@ -256,7 +288,6 @@ tspan {
   text-align: center;
 }
 
-
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
     flex-direction: row;
@@ -267,4 +298,62 @@ tspan {
     min-width: auto;
     margin: 0 auto;
   }
+}
+
+.card {
+  position: relative;
+
+  background-color: #fff;
+  /*  box-shadow: 0 2px 4px 0 #ccd0d9; */
+  border-radius: 4px;
+  border-color: white !important;
+  cursor: pointer;
+  will-change: transform;
+  transition: all 0.3s ease;
+}
+
+.city-chart {
+  position: absolute;
+  left: -20px;
+}
+
+.card-footer {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-top: 0 !important;
+  padding: 1.25rem 1.25rem !important;
+}
+
+.icon {
+  padding: 0;
+  margin: 0 10px 0 0;
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.datetime-container,
+.location-container {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.icon-calendar {
+  background: no-repeat center/65% url('../public/icon-calendar.svg');
+  background-color: #ebe9f6;
+}
+
+.icon-clock {
+  background: no-repeat center/75% url('../public/icon-clock.svg');
+  background-color: #ebe9f6;
+}
+
+.icon-location {
+  background: no-repeat center/60% url('../public/icon-location.svg');
+  background-color: #ebe9f6;
+}
+
+.chart-card {
+  padding-left: 16px;
 }

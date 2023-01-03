@@ -10,7 +10,9 @@ import EventGenre from './EventGenre';
 import { Card, Col, Row } from 'react-bootstrap';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { InfoAlert } from './Alert';
-import ChartCity from './ChartCity';
+import { WarningAlert } from './Alert'
+import MyNavbar from './nav-bar';
+
 
 
 import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend} from 'recharts';
@@ -27,8 +29,8 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     selectedLocation: 'all',
+       warningText: '',
     showWelcomeScreen: undefined,
-        showChart: 'bar'
   }
 
   updateEvents = (location, eventCount) => {
@@ -62,6 +64,7 @@ class App extends Component {
 
   async componentDidMount() {
     this.mounted = true;
+    this.checkOffline();
     const isLocal =
       window.location.href.startsWith("http://127.0.0.1") ||
       window.location.href.startsWith("http://localhost");
@@ -83,13 +86,23 @@ class App extends Component {
     } else {
       getEvents().then((events) => {
         if (this.mounted) {
-        const locations = extractLocations(events);
-        this.setState({ showWelcomeScreen: false, events: events.slice(0, this.state.numberOfEvents), locations: locations, eventsTotalCount: events.length, data: this.getData(locations, events) });
+          this.setState({
+            showWelcomeScreen: false,
+            events: events.slice(0, this.state.numberOfEvents),
+            locations: extractLocations(events),
+          });
         }
       });
     }
   }
 
+    checkOffline = () => {
+    let warningText = navigator.onLine ? '' : 'Your device is offline. Displayed data may be outdated.';
+    this.setState({ warningText });
+  }
+  handleQueryChange = (query) => {
+    this.setState({ query });
+  }
 
   componentWillUnmount(){
     this.mounted = false;
@@ -104,34 +117,35 @@ class App extends Component {
       )
     }
     return (
-      <div className="App">
-      {!navigator.onLine && (
+      <>
+      <MyNavbar/>
+      <div className="App pt-0">
+      {/* {!navigator.onLine && (
           <InfoAlert
             className="alert-centered"
             text="App is currently offline. You are seeing your cached data."
           />
-        )}
-        <h1 className='mt-5 mb-4'>Meet App</h1>
-        <h6 className='mt-3 mb-2'>Choose your nearest city</h6>
-         <div className="flex-container">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-         <NumberOfEvents
+        )} */}
+
+                {this.state.warningText !== '' && <div className="alert-warning">
+          <WarningAlert text={this.state.warningText} />
+        </div>}
+         <div className="mb-4 flex-container">
+<CitySearch locations={this.state.locations} location={this.state.location} updateEvents={this.updateEvents} query={this.state.query} handleQueryChange={this.handleQueryChange} />         <NumberOfEvents
           updateEvents={this.updateEvents}
           numberOfEvents={this.state.numberOfEvents}
         />
         </div>
         <Row>
           <Col>
-          <Card><h4>Events in each city</h4><EventGenre events={this.state.events}/></Card></Col>
-          <Col><Card><h4>Events in each city</h4><ResponsiveContainer height={400} >
-                <ChartCity data={this.state.data} updateEvents={this.updateEvents} locations={this.state.locations}/>
-
-           {/*  <ScatterChart
+          <Card className='mb-4'><h4 className='chart-card mt-4 fw-bold'>Events by Genre</h4><EventGenre events={this.state.events}/></Card></Col>
+          <Col><Card className='mb-4'><h4 className='chart-card mt-4 fw-bold'>Events in each city</h4><ResponsiveContainer height={400} >
+            <ScatterChart className='city-chart'
               margin={{
                 top: 20, right: 20, bottom: 20, left: 20,
               }}
             >
-              <CartesianGrid />
+              <CartesianGrid/>
               <XAxis type="category" dataKey="city" name="City" />
               <YAxis
                 type="number"
@@ -140,12 +154,13 @@ class App extends Component {
                 allowDecimals={false}
                 />
               <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-              <Scatter data={this.getData()} fill="#147FE9" name='Number of events in each city'/>
-              <Legend verticalAlign='bottom' height={60} />
-            </ScatterChart> */}
+              <Scatter data={this.getData()} fill="#147FE9"/>
+            </ScatterChart>
           </ResponsiveContainer></Card></Col></Row>
+
         <EventList events={this.state.events} />
       </div>
+      </>
     );
   }
 }

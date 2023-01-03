@@ -1,0 +1,25 @@
+.navbar {
+    margin-bottom: 10px;
+}
+
+.navbar-brand {
+    font-size: 2rem !important;
+}
+
+.nav-link, .navbar-brand {
+    color: white !important;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+      color: lightblue !important;
+}
+
+.navbar, .nav-color {
+    background-color: #1E34FF !important;
+}
+
+.navbar-toggler, .navbar-toggler-icon {
+    color: white !important;
+    border-color: white!important;
+}
+
