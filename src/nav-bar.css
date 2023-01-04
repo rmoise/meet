@@ -7,11 +7,11 @@
 }
 
 .nav-link, .navbar-brand {
-    color: white !important;
+    color: lightblue !important;
 }
 
 .nav-link:hover, .navbar-brand:hover {
-      color: lightblue !important;
+      color: white !important;
 }
 
 .navbar, .nav-color {
