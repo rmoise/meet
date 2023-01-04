@@ -83,19 +83,20 @@ const eventStart = moment(start.dateTime, "YYYY-MM-DD HH:mm").toDate(); */
               </a>
               <p className="pt-2 pb-3 event__Details--description">{event.description}</p>
             </div>
-
+            <Card.Footer>
             <Button
               className="mx-2 mb-2 details-btn btn-block"
               onClick={this.handleDetailsToggled}
             >
               hide details
             </Button>
+            </Card.Footer>
           </>
         ) : (
-
+        <Card.Footer>
           <Button className="mx-2 mb-2 details-btn" onClick={this.handleDetailsToggled}>
             show details
-          </Button>
+          </Button></Card.Footer>
         )}
 
           </div>

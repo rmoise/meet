@@ -320,7 +320,7 @@ tspan {
 .card-footer {
   background-color: rgba(0, 0, 0, 0) !important;
   border-top: 0 !important;
-  padding: 1.25rem 1.25rem !important;
+  padding: 0.35rem 1.25rem !important;
 }
 
 .icon {
