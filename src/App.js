@@ -132,7 +132,9 @@ class App extends Component {
                 {this.state.warningText !== '' && <div className="alert-warning">
           <WarningAlert text={this.state.warningText} />
         </div>}
+         <h5 className="filter fw-bold">Filter</h5>
          <div className="mb-4 flex-container">
+
 <CitySearch locations={this.state.locations} location={this.state.location} updateEvents={this.updateEvents} query={this.state.query} handleQueryChange={this.handleQueryChange} />         <NumberOfEvents
           updateEvents={this.updateEvents}
           numberOfEvents={this.state.numberOfEvents}
