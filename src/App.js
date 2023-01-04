@@ -143,14 +143,14 @@ class App extends Component {
           <h5 className="fw-bold">Statistics</h5>
           <Accordion className='mb-2' alwaysOpen>
       <Accordion.Item eventKey="0">
-        <Accordion.Header><h5 className="fw-bold">Events by Genre</h5></Accordion.Header>
+        <Accordion.Header><h5 className="fw-bold">Number of Events by Genre</h5></Accordion.Header>
         <Accordion.Body>
 <Card className='mb-4'><EventGenre events={this.state.events}/></Card>
         </Accordion.Body>
       </Accordion.Item>
 
       <Accordion.Item eventKey="1">
-        <Accordion.Header><h5 className="fw-bold">Events in Each City</h5></Accordion.Header>
+        <Accordion.Header><h5 className="fw-bold">Number of Events in Each City</h5></Accordion.Header>
         <Accordion.Body>
 <Card className='mb-4'><ResponsiveContainer height={400} >
             <ScatterChart className='city-chart'
