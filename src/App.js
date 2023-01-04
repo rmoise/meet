@@ -12,6 +12,8 @@ import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { InfoAlert } from './Alert';
 import { WarningAlert } from './Alert'
 import MyNavbar from './nav-bar';
+import Accordion from 'react-bootstrap/Accordion';
+
 
 
 
@@ -138,8 +140,19 @@ class App extends Component {
         </div>
         <Row>
           <Col>
-          <Card className='mb-4'><h4 className='chart-card mt-4 fw-bold'>Events by Genre</h4><EventGenre events={this.state.events}/></Card></Col>
-          <Col><Card className='mb-4'><h4 className='chart-card mt-4 fw-bold'>Events in each city</h4><ResponsiveContainer height={400} >
+          <h5 className="fw-bold">Statistics</h5>
+          <Accordion className='mb-2' alwaysOpen>
+      <Accordion.Item eventKey="0">
+        <Accordion.Header><h5 className="fw-bold">Events by Genre</h5></Accordion.Header>
+        <Accordion.Body>
+<Card className='mb-4'><EventGenre events={this.state.events}/></Card>
+        </Accordion.Body>
+      </Accordion.Item>
+
+      <Accordion.Item eventKey="1">
+        <Accordion.Header><h5 className="fw-bold">Events in Each City</h5></Accordion.Header>
+        <Accordion.Body>
+<Card className='mb-4'><ResponsiveContainer height={400} >
             <ScatterChart className='city-chart'
               margin={{
                 top: 20, right: 20, bottom: 20, left: 20,
@@ -156,8 +169,12 @@ class App extends Component {
               <Tooltip cursor={{ strokeDasharray: '3 3' }} />
               <Scatter data={this.getData()} fill="#147FE9"/>
             </ScatterChart>
-          </ResponsiveContainer></Card></Col></Row>
-
+          </ResponsiveContainer></Card>
+        </Accordion.Body>
+      </Accordion.Item>
+      </Accordion>
+          </Col></Row>
+<h5 className="fw-bold mb-2 mt-2">Events</h5>
         <EventList events={this.state.events} />
       </div>
       </>

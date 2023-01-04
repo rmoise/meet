@@ -65,7 +65,7 @@ const eventStart = moment(start.dateTime, "YYYY-MM-DD HH:mm").toDate(); */
     return (
       <Card className="event px-3">
         <div className="event__Overview">
-          <h4 className="mt-2 fw-bold event__Overview--name">{summary}</h4>
+          <h5 className="mt-2 fw-bold event__Overview--name">{summary}</h5>
                       <div className="datetime-container"><div className="icon icon-calendar"></div><span className='start-time'>{convertDateTime(event.start.dateTime)}</span></div>
                       <div className="location-container"><div className="icon icon-location"></div><span className='location'>{event.location}</span>
             </div>
@@ -77,7 +77,7 @@ const eventStart = moment(start.dateTime, "YYYY-MM-DD HH:mm").toDate(); */
         {this.state.detailsVisible ? (
           <>
             <div className="event__Details">
-              <h5 className="mt-3 fw-bold">About event</h5>
+              <h6 className="mt-3 fw-bold">About event</h6>
               <a href={event.htmlLink} target="_blank" rel="noopener noreferrer">
                 See details on Google Calendar
               </a>
