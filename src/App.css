@@ -350,5 +350,5 @@ tspan {
 }
 
 .accordion-button {
-  position: unset;
+  position: unset !important;
 }
