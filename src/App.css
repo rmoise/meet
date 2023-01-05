@@ -101,7 +101,7 @@ input[type='number'] {
 .alerts {
   position: fixed;
   left: 50%;
-  margin-top: -9px;
+  margin-top: -18px;
   font-size: 14px;
   width: 400px;
   text-align: center;
@@ -110,7 +110,7 @@ input[type='number'] {
 
 .alerts-number {
   position: absolute;
-  margin-top: -32px;
+  margin-top: -41px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
