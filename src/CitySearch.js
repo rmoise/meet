@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { InfoAlert, ErrorAlert } from './Alert'
+import { InfoAlert, ErrorAlert } from './Alert';
 
 class CitySearch extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -10,10 +9,9 @@ class CitySearch extends Component {
       suggestions: [],
       showSuggestions: undefined,
       infoText: '',
-      errorText: ''
-    }
+      errorText: '',
+    };
   }
-
 
   handleInputChanged = (event) => {
     const value = event.target.value;
@@ -22,39 +20,31 @@ class CitySearch extends Component {
     });
     let valueRegex = /[^A-Za-z ,.]/;
     if (valueRegex.test(value)) {
-      this.setState(
-        {
-          query: value,
-          suggestions,
-          infoText: '',
-          errorText: 'Invalid input'
-        }
-      );
+      this.setState({
+        query: value,
+        suggestions,
+        infoText: '',
+        errorText: 'Invalid input',
+      });
       this.props.handleQueryChange(value);
     } else if (suggestions.length === 0) {
-      this.setState(
-        {
-          query: value,
-          suggestions,
-          infoText: 'We can\'t find the city you\'re looking for.',
-          errorText: ''
-        }
-      );
+      this.setState({
+        query: value,
+        suggestions,
+        infoText: "We can't find the city you're looking for.",
+        errorText: '',
+      });
       this.props.handleQueryChange(value);
-
     } else {
-      this.setState(
-        {
-          query: value,
-          suggestions,
-          infoText: '',
-          errorText: ''
-        }
-      );
+      this.setState({
+        query: value,
+        suggestions,
+        infoText: '',
+        errorText: '',
+      });
       this.props.handleQueryChange(value);
-
     }
-  }
+  };
 
   handleItemClicked = (suggestion) => {
     this.setState({
@@ -62,21 +52,19 @@ class CitySearch extends Component {
       suggestions: [],
       showSuggestions: false,
       infoText: '',
-      errorText: ''
+      errorText: '',
     });
     this.props.handleQueryChange(suggestion);
     this.props.updateEvents(suggestion);
-  }
+  };
 
   render() {
-
     let inputStyle = {};
     if (this.state.infoText !== '') {
-      inputStyle = { borderColor: "blue" };
+      inputStyle = { borderColor: 'blue' };
     } else if (this.state.errorText !== '') {
-      inputStyle = { borderColor: "red" };
+      inputStyle = { borderColor: 'red' };
     }
-
 
     return (
       <>
@@ -91,20 +79,28 @@ class CitySearch extends Component {
             value={this.props.query}
             placeholder="Search for a city"
             onChange={this.handleInputChanged}
-            onFocus={() => { this.setState({ showSuggestions: true }) }}
+            onFocus={() => {
+              this.setState({ showSuggestions: true });
+            }}
             style={inputStyle}
           />
-          <ul className="suggestions" style={this.state.showSuggestions ? {} : { display: 'none' }}>
+          <ul
+            className="suggestions"
+            style={this.state.showSuggestions ? {} : { display: 'none' }}
+          >
             {this.state.suggestions.map((suggestion) => (
-              <li key={suggestion} onClick={() => this.handleItemClicked(suggestion)}>
+              <li
+                key={suggestion}
+                onClick={() => this.handleItemClicked(suggestion)}
+              >
                 {suggestion}
               </li>
             ))}
-            <li key="all" onClick={() => this.handleItemClicked("all")} >
+            <li key="all" onClick={() => this.handleItemClicked('all')}>
               <b>See all cities</b>
             </li>
           </ul>
-        </div >
+        </div>
       </>
     );
   }

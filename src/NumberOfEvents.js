@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { InfoAlert, ErrorAlert } from './Alert'
-
-
+import { ErrorAlert } from './Alert';
 
 class NumberOfEvents extends Component {
   state = {
@@ -27,26 +25,26 @@ class NumberOfEvents extends Component {
   };
 
   render() {
-
-        let inputStyle = {};
+    let inputStyle = {};
     if (this.state.infoText !== '') {
-      inputStyle = { borderColor: "red" };
+      inputStyle = { borderColor: 'red' };
     }
 
     return (
       <div>
         <div className="numberOfEvents">
           <label>
-            <h6 className='mb-1'>No. of Events</h6>
-             <div className="alerts-number">
-     <ErrorAlert text={this.state.infoText} />            </div>
+            <h6 className="mb-1">No. of Events</h6>
+            <div className="alerts-number">
+              <ErrorAlert text={this.state.infoText} />
+            </div>
             <input
               type="number"
               id="numberOfEvents__input"
               min="1"
               value={this.state.numberOfEvents}
               onChange={this.handleInputChanged}
-               style={inputStyle}
+              style={inputStyle}
             />
           </label>
         </div>
