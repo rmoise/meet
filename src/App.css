@@ -133,14 +133,14 @@ input[type='number'] {
 }
 
 .details-btn {
-/*   position: absolute;
+  position: absolute;
   right: 5px;
   bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-  text-align: center; */
+  text-align: center;
 }
 
 .name {
