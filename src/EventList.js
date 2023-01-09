@@ -2,18 +2,22 @@
 
 import React, { Component } from 'react';
 import Event from './Event';
+import { Card, Col, Row} from 'react-bootstrap';
+
 
 class EventList extends Component {
 render() {
   const { events } = this.props;
   return (
-    <ul className="EventList">
+    <Row>
       {events.map(event =>
-        <li key={event.id}>
+       <Col md={4}>
+        <div key={event.id}>
           <Event event={event} />
-        </li>
+        </div>
+           </Col>
       )}
-    </ul>
+    </Row>
   );
 }
 }
