@@ -353,3 +353,7 @@ tspan {
 .accordion-button {
   position: unset !important;
 }
+
+.row > * {
+  padding-top: calc(var(--bs-gutter-x) * 0.5);
+}
