@@ -9,12 +9,15 @@ class EventList extends Component {
 render() {
   const { events } = this.props;
   return (
-    <Col className="d-md-flex gap-md-3">
+    <Row>
       {events.map(event =>
+       <Col md={3}>
+        <div key={event.id}>
           <Event event={event} />
+        </div>
+           </Col>
       )}
-    </Col>
-
+    </Row>
   );
 }
 }
