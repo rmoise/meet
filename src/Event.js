@@ -67,7 +67,7 @@ class Event extends Component {
                   {event.description}
                 </p>
               </div>
-              <Card.Footer className='text-center'>
+              <Card.Footer>
                 <Button
                   className="mx-2 mb-2 details-btn btn-block"
                   onClick={this.handleDetailsToggled}
@@ -77,7 +77,7 @@ class Event extends Component {
               </Card.Footer>
             </>
           ) : (
-            <Card.Footer className='mt-3 text-center'>
+            <Card.Footer>
               <Button
                 className="mx-2 mb-2 details-btn"
                 onClick={this.handleDetailsToggled}
