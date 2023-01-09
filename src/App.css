@@ -123,24 +123,24 @@ input[type='number'] {
 }
 
 .event {
-  padding: 10px 10px 35px;
+  padding: 10px 10px 10px;
   margin-bottom: 10px;
   text-align: left;
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
-  height: 200px !important;
+  height: 100% !important;
 }
 
 .details-btn {
-  position: absolute;
+/*   position: absolute;
   right: 5px;
   bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-  text-align: center;
+  text-align: center; */
 }
 
 .name {
