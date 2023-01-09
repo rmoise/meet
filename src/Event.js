@@ -77,7 +77,7 @@ class Event extends Component {
               </Card.Footer>
             </>
           ) : (
-            <Card.Footer>
+            <Card.Footer className='mt-3'>
               <Button
                 className="mx-2 mb-2 details-btn"
                 onClick={this.handleDetailsToggled}
